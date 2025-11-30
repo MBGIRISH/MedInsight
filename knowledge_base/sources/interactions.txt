@@ -1,0 +1,75 @@
+DRUG INTERACTIONS AND CONTRAINDICATIONS
+
+CRITICAL INTERACTIONS (Avoid or use with extreme caution):
+
+Warfarin + Aspirin
+- Severity: CRITICAL
+- Risk: Significantly increased bleeding risk
+- Mechanism: Both drugs affect platelet function and coagulation
+- Recommendation: Avoid combination unless absolutely necessary. If used, monitor INR closely.
+
+Warfarin + Ibuprofen
+- Severity: CRITICAL
+- Risk: Increased bleeding risk and GI ulceration
+- Mechanism: Ibuprofen inhibits platelet aggregation and can cause GI bleeding
+- Recommendation: Avoid combination. Use paracetamol for pain relief instead.
+
+Warfarin + Metformin
+- Severity: HIGH
+- Risk: Increased risk of bleeding complications
+- Mechanism: Metformin may affect coagulation parameters
+- Recommendation: Monitor INR more frequently if combination is necessary.
+
+Aspirin + Ibuprofen
+- Severity: HIGH
+- Risk: Increased GI bleeding and ulceration
+- Mechanism: Both are NSAIDs with similar side effects
+- Recommendation: Avoid combination. Use one or the other, not both.
+
+Metformin + Furosemide
+- Severity: HIGH
+- Risk: Increased risk of lactic acidosis
+- Mechanism: Both can cause dehydration and electrolyte imbalance
+- Recommendation: Monitor electrolytes and renal function closely.
+
+HIGH RISK INTERACTIONS:
+
+ACE Inhibitors (Lisinopril) + Potassium-sparing diuretics
+- Severity: HIGH
+- Risk: Hyperkalemia
+- Mechanism: Both increase serum potassium
+- Recommendation: Monitor potassium levels regularly.
+
+Statins (Atorvastatin, Simvastatin) + Fibrates
+- Severity: HIGH
+- Risk: Increased risk of rhabdomyolysis
+- Mechanism: Both can cause muscle damage
+- Recommendation: Monitor CK levels and muscle symptoms.
+
+Beta-blockers (Metoprolol) + Calcium channel blockers (Amlodipine)
+- Severity: MODERATE
+- Risk: Excessive bradycardia and hypotension
+- Mechanism: Both lower heart rate and blood pressure
+- Recommendation: Monitor heart rate and blood pressure closely.
+
+MODERATE INTERACTIONS:
+
+SSRIs (Sertraline) + NSAIDs
+- Severity: MODERATE
+- Risk: Increased bleeding risk
+- Mechanism: SSRIs affect platelet function
+- Recommendation: Monitor for signs of bleeding.
+
+Proton pump inhibitors (Omeprazole) + Clopidogrel
+- Severity: MODERATE
+- Risk: Reduced effectiveness of clopidogrel
+- Mechanism: Omeprazole may inhibit clopidogrel activation
+- Recommendation: Consider alternative PPI or H2 blocker.
+
+GENERAL PRINCIPLES:
+- Always check for drug interactions before prescribing multiple medications
+- Use drug interaction databases for comprehensive checking
+- Monitor patients closely when using interacting medications
+- Consider alternative medications when possible
+- Educate patients about signs and symptoms of adverse effects
+

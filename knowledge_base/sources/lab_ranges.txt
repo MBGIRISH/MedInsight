@@ -1,0 +1,78 @@
+LABORATORY REFERENCE RANGES
+
+BLOOD GLUCOSE
+- Fasting: 70-100 mg/dL (3.9-5.6 mmol/L)
+- Random: <140 mg/dL (<7.8 mmol/L)
+- HbA1c: <5.7% (normal), 5.7-6.4% (prediabetes), ≥6.5% (diabetes)
+- Critical: <50 mg/dL (hypoglycemia) or >400 mg/dL (hyperglycemia)
+
+CREATININE
+- Normal: 0.6-1.2 mg/dL (53-106 μmol/L) for men, 0.5-1.1 mg/dL (44-97 μmol/L) for women
+- Elevated: >1.2 mg/dL indicates renal impairment
+- Critical: >3.0 mg/dL indicates severe renal impairment
+- eGFR: >60 mL/min/1.73m² (normal), 30-59 (moderate), <30 (severe)
+
+HEMOGLOBIN
+- Normal: 13.5-17.5 g/dL (men), 12.0-15.5 g/dL (women)
+- Low: <13.5 g/dL (men) or <12.0 g/dL (women) indicates anemia
+- Critical: <7.0 g/dL requires transfusion consideration
+
+CHOLESTEROL
+- Total: <200 mg/dL (desirable), 200-239 (borderline), ≥240 (high)
+- LDL: <100 mg/dL (optimal), 100-129 (near optimal), 130-159 (borderline), ≥160 (high)
+- HDL: >40 mg/dL (men), >50 mg/dL (women) - higher is better
+- Triglycerides: <150 mg/dL (normal), 150-199 (borderline), ≥200 (high)
+
+LIVER FUNCTION TESTS
+- ALT (Alanine Aminotransferase): 7-56 U/L (men), 7-40 U/L (women)
+- AST (Aspartate Aminotransferase): 10-40 U/L (men), 9-32 U/L (women)
+- Elevated: >2x upper limit indicates liver injury
+- Critical: >10x upper limit indicates severe liver damage
+
+THYROID FUNCTION
+- TSH: 0.4-4.0 mIU/L (normal), <0.4 (hyperthyroidism), >4.0 (hypothyroidism)
+- T3: 80-200 ng/dL (normal)
+- T4: 4.5-11.2 μg/dL (normal)
+- Critical: TSH <0.1 or >10.0 requires immediate attention
+
+ELECTROLYTES
+- Sodium: 136-145 mEq/L (normal), <135 (hyponatremia), >145 (hypernatremia)
+- Potassium: 3.5-5.0 mEq/L (normal), <3.5 (hypokalemia), >5.0 (hyperkalemia)
+- Critical: K+ <2.5 or >6.0 requires immediate treatment
+- Chloride: 98-107 mEq/L (normal)
+
+COAGULATION
+- INR (International Normalized Ratio): 0.8-1.2 (normal), 2.0-3.0 (therapeutic for warfarin)
+- PT (Prothrombin Time): 11-13 seconds (normal)
+- Critical: INR >5.0 indicates high bleeding risk
+
+CARDIAC MARKERS
+- Troponin: <0.04 ng/mL (normal), >0.04 indicates myocardial injury
+- CK (Creatine Kinase): 22-198 U/L (men), 10-171 U/L (women)
+- Elevated CK: >5x upper limit may indicate rhabdomyolysis
+
+BLOOD PRESSURE
+- Normal: <120/80 mmHg
+- Elevated: 120-129/<80 mmHg
+- Stage 1 Hypertension: 130-139/80-89 mmHg
+- Stage 2 Hypertension: ≥140/90 mmHg
+- Hypertensive Crisis: >180/120 mmHg (requires immediate treatment)
+
+MONITORING REQUIREMENTS BY MEDICATION:
+
+Warfarin: INR monitoring required (target 2.0-3.0 for most conditions)
+
+Metformin: Creatinine and eGFR before starting and annually (contraindicated if eGFR <30)
+
+Statins (Atorvastatin, Simvastatin): ALT, AST, and CK before starting and as needed
+
+Furosemide: Electrolytes (Na, K, Cl) and creatinine regularly
+
+Levothyroxine: TSH levels 6-8 weeks after starting and dose changes
+
+ACE Inhibitors (Lisinopril): Potassium and creatinine before starting and regularly
+
+Beta-blockers (Metoprolol): Heart rate and blood pressure monitoring
+
+Proton Pump Inhibitors (Omeprazole): Magnesium levels if long-term use (>1 year)
+

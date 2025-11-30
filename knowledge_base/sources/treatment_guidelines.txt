@@ -1,0 +1,83 @@
+TREATMENT GUIDELINES - WHO, NHS, AND CLINICAL PROTOCOLS
+
+DIABETES MELLITUS TYPE 2
+- First-line: Metformin 500-1000 mg twice daily
+- Second-line: Add sulfonylurea, DPP-4 inhibitor, or GLP-1 agonist
+- Target HbA1c: <7.0% for most patients
+- Monitoring: HbA1c every 3-6 months, annual eye exam, foot exam
+- Lifestyle: Diet, exercise, weight management
+- WHO Guidelines: Metformin is first-line unless contraindicated
+
+HYPERTENSION
+- First-line: ACE inhibitor (Lisinopril) or ARB, or Calcium channel blocker (Amlodipine)
+- Target: <140/90 mmHg for most, <130/80 for high-risk patients
+- Combination: Often requires 2-3 medications
+- Monitoring: Blood pressure every 3-6 months
+- Lifestyle: Low sodium diet, exercise, weight loss
+- WHO Guidelines: Treat if BP >140/90 mmHg
+
+HYPERLIPIDEMIA
+- First-line: Statin (Atorvastatin 10-20 mg or Simvastatin 20-40 mg)
+- Target LDL: <100 mg/dL for high risk, <70 mg/dL for very high risk
+- Monitoring: Lipid panel 4-12 weeks after starting, then annually
+- Lifestyle: Low-fat diet, exercise
+- WHO Guidelines: Statin therapy for primary and secondary prevention
+
+HYPOTHYROIDISM
+- Treatment: Levothyroxine 25-150 mcg once daily
+- Target TSH: 0.4-4.0 mIU/L (individualized)
+- Monitoring: TSH 6-8 weeks after starting or dose change
+- Duration: Lifelong treatment typically required
+- WHO Guidelines: Treat with levothyroxine to normalize TSH
+
+BACTERIAL INFECTIONS
+- First-line: Amoxicillin 250-500 mg three times daily for 7-14 days
+- Alternative: Consider local resistance patterns
+- Monitoring: Clinical response, consider culture if no improvement
+- Duration: Complete full course even if symptoms improve
+- WHO Guidelines: Use antibiotics judiciously to prevent resistance
+
+PAIN MANAGEMENT
+- Mild pain: Paracetamol 500-1000 mg every 4-6 hours
+- Moderate pain: Ibuprofen 200-400 mg every 4-6 hours (max 3200 mg/day)
+- Severe pain: Consider opioids (with caution)
+- Duration: Limit NSAIDs to 10 days unless supervised
+- WHO Guidelines: Stepwise approach to pain management
+
+GASTROESOPHAGEAL REFLUX DISEASE (GERD)
+- First-line: Lifestyle modifications (diet, weight loss, elevation of head)
+- Second-line: Proton pump inhibitor (Omeprazole 20-40 mg daily)
+- Duration: 4-8 weeks initially, then as needed
+- Monitoring: Consider endoscopy if persistent symptoms
+- WHO Guidelines: PPI for moderate-severe GERD
+
+DEPRESSION
+- First-line: SSRI (Sertraline 50-100 mg daily)
+- Target: Improvement in symptoms within 4-6 weeks
+- Duration: Continue for 6-12 months after remission
+- Monitoring: Assess for suicidal ideation, especially in first few weeks
+- WHO Guidelines: SSRI as first-line treatment for moderate-severe depression
+
+ATRIAL FIBRILLATION (Anticoagulation)
+- Treatment: Warfarin (target INR 2.0-3.0) or DOAC
+- Indication: CHA2DS2-VASc score ≥2 for men, ≥3 for women
+- Monitoring: INR every 1-4 weeks for warfarin
+- Duration: Long-term unless contraindicated
+- WHO Guidelines: Anticoagulation for stroke prevention in AF
+
+HEART FAILURE
+- Treatment: ACE inhibitor + Beta-blocker + Diuretic (Furosemide)
+- Target: Symptom control, prevent hospitalizations
+- Monitoring: Weight, symptoms, electrolytes, renal function
+- Lifestyle: Low sodium diet, fluid restriction if indicated
+- WHO Guidelines: Combination therapy for heart failure with reduced ejection fraction
+
+GENERAL PRINCIPLES:
+- Follow evidence-based guidelines (WHO, NHS, professional societies)
+- Individualize treatment based on patient factors
+- Monitor for efficacy and adverse effects
+- Adjust treatment based on response
+- Consider drug interactions and contraindications
+- Educate patients about their medications
+- Regular follow-up and monitoring essential
+

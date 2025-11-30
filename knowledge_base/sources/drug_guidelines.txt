@@ -1,0 +1,98 @@
+DRUG DOSAGE GUIDELINES
+
+Aspirin (Acetylsalicylic Acid)
+- Standard dose: 75-100 mg once daily for cardiovascular protection
+- Maximum dose: 4000 mg per day
+- Overdose risk: >4000 mg/day can cause gastrointestinal bleeding
+- Pediatric: Not recommended under 16 years
+
+Ibuprofen
+- Standard dose: 200-400 mg every 4-6 hours
+- Maximum dose: 3200 mg per day
+- Overdose risk: >3200 mg/day increases risk of GI ulcers and renal impairment
+- Duration: Should not exceed 10 days without medical supervision
+
+Paracetamol (Acetaminophen)
+- Standard dose: 500-1000 mg every 4-6 hours
+- Maximum dose: 4000 mg per day
+- Overdose risk: >4000 mg/day can cause severe liver damage
+- Critical: Single dose >7500 mg requires immediate medical attention
+
+Metformin
+- Standard dose: 500-1000 mg twice daily
+- Maximum dose: 2550 mg per day
+- Overdose risk: >2550 mg/day increases risk of lactic acidosis
+- Monitoring: Check creatinine and eGFR before and during treatment
+
+Warfarin
+- Standard dose: 2-10 mg once daily (dose varies based on INR)
+- Maximum dose: 10 mg per day (rarely exceeded)
+- Overdose risk: >10 mg/day significantly increases bleeding risk
+- Monitoring: INR must be checked regularly (target 2-3 for most conditions)
+
+Amoxicillin
+- Standard dose: 250-500 mg three times daily
+- Maximum dose: 3000 mg per day
+- Overdose risk: >3000 mg/day can cause severe diarrhea and Clostridium difficile infection
+- Duration: Typically 7-14 days for bacterial infections
+
+Atorvastatin
+- Standard dose: 10-20 mg once daily
+- Maximum dose: 80 mg per day
+- Overdose risk: >80 mg/day increases risk of rhabdomyolysis
+- Monitoring: Check liver function tests (ALT, AST) and CK before and during treatment
+
+Simvastatin
+- Standard dose: 10-20 mg once daily
+- Maximum dose: 80 mg per day
+- Overdose risk: >80 mg/day increases risk of muscle damage
+- Monitoring: Liver function tests and CK required
+
+Omeprazole
+- Standard dose: 20-40 mg once daily
+- Maximum dose: 80 mg per day
+- Overdose risk: >80 mg/day may cause hypomagnesemia
+- Duration: Long-term use (>1 year) requires monitoring
+
+Lisinopril
+- Standard dose: 10-20 mg once daily
+- Maximum dose: 40 mg per day
+- Overdose risk: >40 mg/day increases risk of hyperkalemia and renal impairment
+- Monitoring: Check potassium and creatinine
+
+Amlodipine
+- Standard dose: 5-10 mg once daily
+- Maximum dose: 10 mg per day
+- Overdose risk: >10 mg/day can cause severe hypotension
+- Monitoring: Blood pressure monitoring required
+
+Metoprolol
+- Standard dose: 50-100 mg twice daily
+- Maximum dose: 200 mg per day
+- Overdose risk: >200 mg/day can cause bradycardia and heart block
+- Monitoring: Heart rate and blood pressure
+
+Furosemide
+- Standard dose: 20-80 mg once or twice daily
+- Maximum dose: 600 mg per day
+- Overdose risk: >600 mg/day can cause severe dehydration and electrolyte imbalance
+- Monitoring: Electrolytes (Na, K, Cl) and creatinine required
+
+Levothyroxine
+- Standard dose: 25-150 mcg once daily
+- Maximum dose: 300 mcg per day
+- Overdose risk: >300 mcg/day can cause hyperthyroidism
+- Monitoring: TSH levels required
+
+Gabapentin
+- Standard dose: 300-600 mg three times daily
+- Maximum dose: 3600 mg per day
+- Overdose risk: >3600 mg/day increases risk of sedation and respiratory depression
+- Monitoring: Renal function (dose adjustment needed in renal impairment)
+
+Sertraline
+- Standard dose: 50-100 mg once daily
+- Maximum dose: 200 mg per day
+- Overdose risk: >200 mg/day increases risk of serotonin syndrome
+- Monitoring: Monitor for mood changes and suicidal ideation
+

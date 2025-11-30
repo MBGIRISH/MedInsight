@@ -1,0 +1,93 @@
+MEDICAL RED FLAGS - EMERGENCY SYMPTOMS REQUIRING IMMEDIATE ATTENTION
+
+CRITICAL RED FLAGS:
+
+Chest Pain
+- Description: Any chest pain, especially if severe, crushing, or radiating
+- Urgency: IMMEDIATE - Rule out myocardial infarction
+- Action: ECG, cardiac enzymes, immediate medical evaluation
+- Associated symptoms: Shortness of breath, nausea, sweating, arm/jaw pain
+
+Shortness of Breath
+- Description: Difficulty breathing, especially if sudden onset
+- Urgency: IMMEDIATE - Could indicate pulmonary embolism, heart failure, or asthma
+- Action: Oxygen, chest X-ray, immediate medical evaluation
+- Associated symptoms: Chest pain, cough, wheezing, cyanosis
+
+Severe Headache
+- Description: Sudden, severe headache ("worst headache of life")
+- Urgency: IMMEDIATE - Rule out subarachnoid hemorrhage
+- Action: CT head, lumbar puncture if indicated, immediate medical evaluation
+- Associated symptoms: Neck stiffness, photophobia, altered consciousness
+
+Loss of Consciousness
+- Description: Any episode of fainting or loss of consciousness
+- Urgency: IMMEDIATE - Rule out cardiac arrhythmia, stroke, seizure
+- Action: ECG, neurological exam, immediate medical evaluation
+- Associated symptoms: Palpitations, chest pain, seizure activity
+
+Severe Bleeding
+- Description: Uncontrolled bleeding, especially from GI tract
+- Urgency: IMMEDIATE - Risk of hypovolemic shock
+- Action: IV access, fluid resuscitation, blood products if needed
+- Associated symptoms: Dizziness, weakness, low blood pressure
+
+Severe Allergic Reaction (Anaphylaxis)
+- Description: Difficulty breathing, swelling, hives, hypotension
+- Urgency: IMMEDIATE - Life-threatening
+- Action: Epinephrine, antihistamines, steroids, immediate medical care
+- Associated symptoms: Swelling of face/tongue, wheezing, rash
+
+Stroke Symptoms
+- Description: Sudden weakness, numbness, speech difficulty, vision loss
+- Urgency: IMMEDIATE - Time-sensitive treatment window
+- Action: CT head, neurological exam, consider thrombolytics
+- Associated symptoms: Facial droop, arm weakness, confusion
+
+Heart Attack Symptoms
+- Description: Chest pain, pressure, or discomfort
+- Urgency: IMMEDIATE - Time-sensitive treatment
+- Action: ECG, cardiac enzymes, aspirin, immediate medical care
+- Associated symptoms: Shortness of breath, nausea, arm/jaw pain, sweating
+
+HIGH PRIORITY RED FLAGS:
+
+Severe Pain
+- Description: Pain rated 8-10/10, especially if sudden onset
+- Urgency: HIGH - Requires immediate evaluation
+- Action: Pain assessment, appropriate imaging, pain management
+- Associated symptoms: Location-specific symptoms
+
+High Fever (>39°C or 102°F)
+- Description: Persistent high fever, especially in children or elderly
+- Urgency: HIGH - Could indicate serious infection
+- Action: Blood cultures, appropriate antibiotics, supportive care
+- Associated symptoms: Chills, rigors, confusion
+
+Severe Vomiting or Diarrhea
+- Description: Persistent, leading to dehydration
+- Urgency: HIGH - Risk of dehydration and electrolyte imbalance
+- Action: IV fluids, electrolyte replacement, antiemetics
+- Associated symptoms: Weakness, dizziness, decreased urine output
+
+MODERATE PRIORITY RED FLAGS:
+
+Persistent Cough with Blood
+- Description: Hemoptysis (coughing up blood)
+- Urgency: MODERATE-HIGH - Requires investigation
+- Action: Chest X-ray, sputum culture, consider CT chest
+- Associated symptoms: Chest pain, shortness of breath
+
+Severe Dizziness or Vertigo
+- Description: Persistent, affecting daily activities
+- Urgency: MODERATE - Rule out serious causes
+- Action: Neurological exam, consider imaging if indicated
+- Associated symptoms: Nausea, hearing loss, tinnitus
+
+GENERAL PRINCIPLES:
+- When in doubt, err on the side of caution
+- Red flag symptoms require immediate medical evaluation
+- Do not delay treatment for red flag symptoms
+- Document all red flag symptoms clearly
+- Educate patients about when to seek immediate medical attention
+
