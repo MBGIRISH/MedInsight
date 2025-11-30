@@ -1,0 +1,23 @@
+{
+  "overdose_case": {
+    "description": "Patient prescribed excessive dose of paracetamol",
+    "text": "Patient: John Doe, Age: 45\nPrescription:\n- Paracetamol 5000 mg twice daily for 7 days\n- Ibuprofen 400 mg three times daily\nSymptoms: Headache, fever\nLab values: Glucose 95 mg/dL, Creatinine 1.0 mg/dL"
+  },
+  "interaction_case": {
+    "description": "Dangerous drug interaction between warfarin and aspirin",
+    "text": "Patient: Jane Smith, Age: 68\nPrescription:\n- Warfarin 5 mg once daily\n- Aspirin 100 mg once daily\n- Metformin 500 mg twice daily\nCondition: Atrial fibrillation, Type 2 diabetes\nLab values: INR 2.5, HbA1c 7.2%"
+  },
+  "redflag_case": {
+    "description": "Patient with red flag symptoms requiring immediate attention",
+    "text": "Patient: Robert Johnson, Age: 55\nChief Complaint: Severe chest pain radiating to left arm\nSymptoms: Chest pain, shortness of breath, nausea, sweating\nVitals: BP 150/95, Heart rate 95 bpm\nPrescription:\n- Aspirin 300 mg once daily\n- Atorvastatin 20 mg once daily"
+  },
+  "missing_tests_case": {
+    "description": "Patient on statin without liver function tests",
+    "text": "Patient: Mary Williams, Age: 62\nPrescription:\n- Atorvastatin 40 mg once daily\n- Lisinopril 10 mg once daily\nCondition: Hyperlipidemia, Hypertension\nLab values: Cholesterol 220 mg/dL, LDL 150 mg/dL\nNote: No liver function tests performed"
+  },
+  "guideline_violation_case": {
+    "description": "Treatment not following standard guidelines",
+    "text": "Patient: David Brown, Age: 50\nCondition: Type 2 Diabetes, HbA1c 8.5%\nPrescription:\n- Ibuprofen 400 mg three times daily\n- Omeprazole 20 mg once daily\nNote: No metformin prescribed despite diabetes diagnosis\nLab values: Glucose 180 mg/dL, HbA1c 8.5%"
+  }
+}
+
