@@ -208,6 +208,15 @@ class InteractionCheckerAgent:
         except Exception as e:
             print(f"Warning: Could not initialize LLM service for InteractionChecker: {e}")
             self.llm_service = None
+        
+        # Known dangerous interactions (fallback)
+        self.dangerous_interactions = [
+            ('warfarin', 'aspirin'),
+            ('warfarin', 'ibuprofen'),
+            ('warfarin', 'metformin'),
+            ('aspirin', 'ibuprofen'),
+            ('metformin', 'furosemide')
+        ]
     
     def _generate_llm_explanation_chain(self, agent_name: str, issues: List[Dict], 
                                        *context_args) -> Dict[str, Any]:
@@ -258,14 +267,6 @@ Format as JSON:
         except Exception as e:
             print(f"LLM explanation chain generation failed: {e}")
             return None
-        # Known dangerous interactions (fallback)
-        self.dangerous_interactions = [
-            ('warfarin', 'aspirin'),
-            ('warfarin', 'ibuprofen'),
-            ('warfarin', 'metformin'),
-            ('aspirin', 'ibuprofen'),
-            ('metformin', 'furosemide')
-        ]
 
     def check(self, drugs: List[Dict]) -> AgentOutput:
         """Check for drug interactions."""

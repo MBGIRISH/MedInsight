@@ -1,10 +1,10 @@
 # MedInsight
 
-AI-powered clinical notes auditor for automated medical safety analysis and risk assessment.
+A comprehensive clinical notes auditing system for automated medical safety analysis and risk assessment.
 
 ## Overview
 
-MedInsight analyzes clinical notes, prescriptions, and medical documents to identify potential safety issues, drug interactions, dosage errors, and guideline compliance violations. The system uses advanced NLP, RAG (Retrieval-Augmented Generation), and multi-agent AI to provide comprehensive medical audit reports.
+MedInsight is a production-ready system that analyzes clinical notes, prescriptions, and medical documents to identify potential safety issues, drug interactions, dosage errors, and guideline compliance violations. Built with modern AI technologies including NLP, RAG (Retrieval-Augmented Generation), and a multi-agent architecture, MedInsight provides comprehensive medical audit reports with actionable insights.
 
 ## Features
 
@@ -19,13 +19,13 @@ MedInsight analyzes clinical notes, prescriptions, and medical documents to iden
 
 ## Technology Stack
 
-- **Backend**: Python, FastAPI, Uvicorn
+- **Backend**: Python 3.8+, FastAPI, Uvicorn
 - **AI/ML**: LangChain, Hugging Face Transformers, OpenAI GPT-4
-- **NLP**: BERT-based NER, sentence-transformers for embeddings
-- **Vector Database**: Chroma DB for semantic search
-- **Database**: MongoDB for audit storage
-- **Frontend**: Streamlit with Plotly visualizations
-- **Document Processing**: pdfplumber, pytesseract (OCR)
+- **NLP**: BERT-based Named Entity Recognition, sentence-transformers for embeddings
+- **Vector Database**: Chroma DB for semantic search and RAG
+- **Database**: MongoDB for persistent audit storage
+- **Frontend**: Streamlit with Plotly for interactive visualizations
+- **Document Processing**: pdfplumber for PDF extraction, pytesseract for OCR
 
 ## Project Structure
 
@@ -60,7 +60,7 @@ MedInsight/
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/MedInsight.git
+git clone <repository-url>
 cd MedInsight
 ```
 
@@ -104,8 +104,27 @@ echo "OPENAI_API_KEY=your_key_here" >> .env
 
 ## Running the Application
 
-### Start Backend Server
+### Quick Start (Both Services)
 
+**Easiest way - Start both backend and dashboard:**
+```bash
+./start.sh
+```
+
+This will:
+- Check if ports are available (stops existing services if needed)
+- Start MongoDB (if not running)
+- Start FastAPI backend on `http://localhost:8000`
+- Start Streamlit dashboard on `http://localhost:8501`
+
+**To stop all services:**
+```bash
+./stop.sh
+```
+
+### Manual Start (Separate Terminals)
+
+**Terminal 1 - Backend:**
 ```bash
 cd backend
 source venv/bin/activate
@@ -116,8 +135,7 @@ The API will be available at `http://localhost:8000`
 - API Documentation: `http://localhost:8000/docs`
 - Health Check: `http://localhost:8000/api/health`
 
-### Start Dashboard
-
+**Terminal 2 - Dashboard:**
 ```bash
 cd dashboard
 source ../backend/venv/bin/activate
@@ -125,6 +143,16 @@ streamlit run streamlit_app.py
 ```
 
 The dashboard will be available at `http://localhost:8501`
+
+### Alternative: Use Individual Scripts
+
+```bash
+# Terminal 1
+./start_backend.sh
+
+# Terminal 2
+./start_dashboard.sh
+```
 
 ## Usage
 
@@ -171,15 +199,20 @@ See `http://localhost:8000/docs` for interactive API documentation.
 
 ## System Architecture
 
-The system consists of several key components:
+MedInsight follows a modular architecture with the following key components:
 
-1. **Ingestion Service**: Extracts text from PDFs and images
-2. **NER Service**: Identifies medical entities using BERT-based models
-3. **Normalizer Service**: Standardizes extracted entities
-4. **RAG Service**: Retrieves relevant medical knowledge using vector search
-5. **Agent System**: Five specialized agents analyze different aspects
-6. **Decision Engine**: Merges agent outputs and generates final report
-7. **Analytics**: Aggregates and visualizes audit data
+1. **Ingestion Service**: Extracts and processes text from PDFs and images using OCR
+2. **NER Service**: Identifies medical entities (drugs, symptoms, vitals, lab values) using BERT-based models
+3. **Normalizer Service**: Standardizes and normalizes extracted entities for consistent processing
+4. **RAG Service**: Retrieves relevant medical knowledge from the vector store using semantic search
+5. **Multi-Agent System**: Five specialized agents perform focused analysis:
+   - Dosage Checker: Validates medication dosages
+   - Interaction Checker: Identifies drug-drug interactions
+   - Red Flag Checker: Detects emergency symptoms
+   - Missing Tests Checker: Suggests required diagnostic tests
+   - Guideline Compliance Checker: Validates against clinical guidelines
+6. **Decision Engine**: Aggregates agent outputs, calculates risk scores, and generates comprehensive reports
+7. **Analytics Engine**: Aggregates audit data and provides insights through the dashboard
 
 ## Testing
 
@@ -247,8 +280,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
 
-## Contact
+## Support
 
-For questions or issues, please open an issue on GitHub.
+For questions, issues, or feature requests, please open an issue in the repository.

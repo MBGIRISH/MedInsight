@@ -50,3 +50,9 @@ htmlcov/
 
 # Streamlit
 .streamlit/
+
+# AI/IDE specific
+.bolt/
+.cursor/
+*.bolt
+.cursorrules

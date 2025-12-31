@@ -18,6 +18,8 @@ async def get_audits(
     start_date: Optional[str] = Query(None, description="Start date (YYYY-MM-DD)"),
     end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)"),
     severity: Optional[str] = Query(None, description="Filter by severity"),
+    categories: Optional[str] = Query(None, description="Comma-separated list of categories"),
+    symptoms: Optional[str] = Query(None, description="Comma-separated list of symptoms"),
     limit: int = Query(1000, description="Maximum number of audits to return")
 ):
     """Get all audits with optional filtering."""
@@ -47,6 +49,30 @@ async def get_audits(
             if severity.lower() in severity_ranges:
                 query["risk_score"] = severity_ranges[severity.lower()]
         
+        # Category filtering
+        if categories:
+            category_list = [c.strip() for c in categories.split(",")]
+            category_keywords = {
+                "Respiratory": ["breath", "cough", "sputum", "oxygen", "dyspnea", "sob", "wheezing"],
+                "Cardiac": ["chest pain", "heart", "cardiac", "myocardial", "angina", "tachycardia"],
+                "Infection": ["fever", "infection", "sepsis", "meningitis", "bacterial"],
+                "Neurological": ["headache", "confusion", "stroke", "seizure", "weakness", "facial droop"],
+                "Gastrointestinal": ["nausea", "vomiting", "diarrhea", "abdominal pain", "gi"],
+                "Metabolic": ["glucose", "diabetes", "diabetic", "hyperglycemia", "hypoglycemia"]
+            }
+            category_regex = []
+            for cat in category_list:
+                if cat in category_keywords:
+                    category_regex.extend([{"$regex": kw, "$options": "i"} for kw in category_keywords[cat]])
+            if category_regex:
+                query["$or"] = query.get("$or", [])
+                query["$or"].append({"ner_result.normalized_entities.symptoms": {"$in": category_regex}})
+        
+        # Symptom filtering
+        if symptoms:
+            symptom_list = [s.strip() for s in symptoms.split(",")]
+            query["ner_result.normalized_entities.symptoms"] = {"$in": symptom_list}
+        
         audits = list(collection.find(query).sort("created_at", -1).limit(limit))
         
         # Convert ObjectId to string
@@ -67,7 +93,8 @@ async def get_audits(
 @router.get("/analytics/kpis")
 async def get_kpis(
     start_date: Optional[str] = Query(None, description="Start date (YYYY-MM-DD)"),
-    end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)")
+    end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)"),
+    severity: Optional[str] = Query(None, description="Filter by severity")
 ):
     """Get KPI metrics."""
     try:
@@ -81,6 +108,18 @@ async def get_kpis(
             if end_date:
                 date_query["$lte"] = datetime.fromisoformat(end_date) + timedelta(days=1)
             query["created_at"] = date_query
+        
+        # Severity filtering
+        if severity:
+            severity_ranges = {
+                "critical": {"$gte": 9.0},
+                "high": {"$gte": 6.0, "$lt": 9.0},
+                "moderate": {"$gte": 3.0, "$lt": 6.0},
+                "low": {"$gte": 1.0, "$lt": 3.0},
+                "ok": {"$eq": 0.0}
+            }
+            if severity.lower() in severity_ranges:
+                query["risk_score"] = severity_ranges[severity.lower()]
         
         total_audits = collection.count_documents(query)
         
@@ -145,6 +184,7 @@ async def get_kpis(
 async def get_trends(
     start_date: Optional[str] = Query(None, description="Start date (YYYY-MM-DD)"),
     end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)"),
+    severity: Optional[str] = Query(None, description="Filter by severity"),
     group_by: str = Query("day", description="Group by: day, week, month")
 ):
     """Get risk score and severity trends over time."""
@@ -159,6 +199,18 @@ async def get_trends(
             if end_date:
                 date_query["$lte"] = datetime.fromisoformat(end_date) + timedelta(days=1)
             query["created_at"] = date_query
+        
+        # Severity filtering
+        if severity:
+            severity_ranges = {
+                "critical": {"$gte": 9.0},
+                "high": {"$gte": 6.0, "$lt": 9.0},
+                "moderate": {"$gte": 3.0, "$lt": 6.0},
+                "low": {"$gte": 1.0, "$lt": 3.0},
+                "ok": {"$eq": 0.0}
+            }
+            if severity.lower() in severity_ranges:
+                query["risk_score"] = severity_ranges[severity.lower()]
         
         # Group by date
         date_format = {
@@ -196,6 +248,7 @@ async def get_trends(
 async def get_symptom_analytics(
     start_date: Optional[str] = Query(None, description="Start date (YYYY-MM-DD)"),
     end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)"),
+    severity: Optional[str] = Query(None, description="Filter by severity"),
     limit: int = Query(20, description="Number of top symptoms to return")
 ):
     """Get symptom frequency and correlation data."""
@@ -210,6 +263,18 @@ async def get_symptom_analytics(
             if end_date:
                 date_query["$lte"] = datetime.fromisoformat(end_date) + timedelta(days=1)
             query["created_at"] = date_query
+        
+        # Severity filtering
+        if severity:
+            severity_ranges = {
+                "critical": {"$gte": 9.0},
+                "high": {"$gte": 6.0, "$lt": 9.0},
+                "moderate": {"$gte": 3.0, "$lt": 6.0},
+                "low": {"$gte": 1.0, "$lt": 3.0},
+                "ok": {"$eq": 0.0}
+            }
+            if severity.lower() in severity_ranges:
+                query["risk_score"] = severity_ranges[severity.lower()]
         
         # Get symptom frequency
         pipeline = [
@@ -250,7 +315,8 @@ async def get_symptom_analytics(
 @router.get("/analytics/agents")
 async def get_agent_analytics(
     start_date: Optional[str] = Query(None, description="Start date (YYYY-MM-DD)"),
-    end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)")
+    end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)"),
+    severity: Optional[str] = Query(None, description="Filter by severity")
 ):
     """Get agent performance and trigger statistics."""
     try:
@@ -264,6 +330,18 @@ async def get_agent_analytics(
             if end_date:
                 date_query["$lte"] = datetime.fromisoformat(end_date) + timedelta(days=1)
             query["created_at"] = date_query
+        
+        # Severity filtering
+        if severity:
+            severity_ranges = {
+                "critical": {"$gte": 9.0},
+                "high": {"$gte": 6.0, "$lt": 9.0},
+                "moderate": {"$gte": 3.0, "$lt": 6.0},
+                "low": {"$gte": 1.0, "$lt": 3.0},
+                "ok": {"$eq": 0.0}
+            }
+            if severity.lower() in severity_ranges:
+                query["risk_score"] = severity_ranges[severity.lower()]
         
         pipeline = [
             {"$match": query},
@@ -306,7 +384,8 @@ async def get_agent_analytics(
 @router.get("/analytics/categories")
 async def get_category_analytics(
     start_date: Optional[str] = Query(None, description="Start date (YYYY-MM-DD)"),
-    end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)")
+    end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)"),
+    categories: Optional[str] = Query(None, description="Comma-separated list of categories to filter")
 ):
     """Get clinical category analytics."""
     try:
@@ -322,7 +401,7 @@ async def get_category_analytics(
             query["created_at"] = date_query
         
         # Category keywords
-        categories = {
+        all_categories = {
             "Respiratory": ["breath", "cough", "sputum", "oxygen", "dyspnea", "sob", "wheezing"],
             "Cardiac": ["chest pain", "heart", "cardiac", "myocardial", "angina", "tachycardia"],
             "Infection": ["fever", "infection", "sepsis", "meningitis", "bacterial"],
@@ -331,8 +410,14 @@ async def get_category_analytics(
             "Metabolic": ["glucose", "diabetes", "diabetic", "hyperglycemia", "hypoglycemia"]
         }
         
+        # Filter categories if specified
+        categories_to_process = all_categories
+        if categories:
+            category_list = [c.strip() for c in categories.split(",")]
+            categories_to_process = {k: v for k, v in all_categories.items() if k in category_list}
+        
         category_stats = {}
-        for category, keywords in categories.items():
+        for category, keywords in categories_to_process.items():
             # Count audits matching category keywords
             category_query = {
                 **query,
@@ -383,7 +468,8 @@ async def get_category_analytics(
 @router.get("/analytics/medications")
 async def get_medication_analytics(
     start_date: Optional[str] = Query(None, description="Start date (YYYY-MM-DD)"),
-    end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)")
+    end_date: Optional[str] = Query(None, description="End date (YYYY-MM-DD)"),
+    severity: Optional[str] = Query(None, description="Filter by severity")
 ):
     """Get medication safety analytics (dosage errors, interactions)."""
     try:
@@ -397,6 +483,18 @@ async def get_medication_analytics(
             if end_date:
                 date_query["$lte"] = datetime.fromisoformat(end_date) + timedelta(days=1)
             query["created_at"] = date_query
+        
+        # Severity filtering
+        if severity:
+            severity_ranges = {
+                "critical": {"$gte": 9.0},
+                "high": {"$gte": 6.0, "$lt": 9.0},
+                "moderate": {"$gte": 3.0, "$lt": 6.0},
+                "low": {"$gte": 1.0, "$lt": 3.0},
+                "ok": {"$eq": 0.0}
+            }
+            if severity.lower() in severity_ranges:
+                query["risk_score"] = severity_ranges[severity.lower()]
         
         # Get dosage errors
         dosage_errors = collection.count_documents({

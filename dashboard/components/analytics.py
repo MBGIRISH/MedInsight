@@ -4,6 +4,7 @@ Power BI-style Analytics Dashboard Components for MedInsight.
 import streamlit as st
 import pandas as pd
 import numpy as np
+import re
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timedelta
 import requests
@@ -25,8 +26,9 @@ except ImportError:
 # ============================================
 
 def load_analytics_data(api_base_url: str, start_date: Optional[str] = None, 
-                       end_date: Optional[str] = None, severity: Optional[str] = None) -> Dict[str, Any]:
-    """Load all analytics data from API."""
+                       end_date: Optional[str] = None, severity: Optional[str] = None,
+                       categories: Optional[List[str]] = None, symptoms: Optional[List[str]] = None) -> Dict[str, Any]:
+    """Load all analytics data from API with filtering."""
     data = {}
     
     try:
@@ -36,6 +38,8 @@ def load_analytics_data(api_base_url: str, start_date: Optional[str] = None,
             params["start_date"] = start_date
         if end_date:
             params["end_date"] = end_date
+        if severity and severity != "All":
+            params["severity"] = severity.lower()
         response = requests.get(f"{api_base_url}/api/analytics/kpis", params=params, timeout=10)
         if response.status_code == 200:
             data["kpis"] = response.json()
@@ -46,6 +50,8 @@ def load_analytics_data(api_base_url: str, start_date: Optional[str] = None,
             params["start_date"] = start_date
         if end_date:
             params["end_date"] = end_date
+        if severity and severity != "All":
+            params["severity"] = severity.lower()
         response = requests.get(f"{api_base_url}/api/analytics/trends", params=params, timeout=10)
         if response.status_code == 200:
             data["trends"] = response.json()
@@ -56,6 +62,8 @@ def load_analytics_data(api_base_url: str, start_date: Optional[str] = None,
             params["start_date"] = start_date
         if end_date:
             params["end_date"] = end_date
+        if severity and severity != "All":
+            params["severity"] = severity.lower()
         response = requests.get(f"{api_base_url}/api/analytics/symptoms", params=params, timeout=10)
         if response.status_code == 200:
             data["symptoms"] = response.json()
@@ -66,6 +74,8 @@ def load_analytics_data(api_base_url: str, start_date: Optional[str] = None,
             params["start_date"] = start_date
         if end_date:
             params["end_date"] = end_date
+        if severity and severity != "All":
+            params["severity"] = severity.lower()
         response = requests.get(f"{api_base_url}/api/analytics/agents", params=params, timeout=10)
         if response.status_code == 200:
             data["agents"] = response.json()
@@ -76,6 +86,8 @@ def load_analytics_data(api_base_url: str, start_date: Optional[str] = None,
             params["start_date"] = start_date
         if end_date:
             params["end_date"] = end_date
+        if categories:
+            params["categories"] = ",".join(categories)
         response = requests.get(f"{api_base_url}/api/analytics/categories", params=params, timeout=10)
         if response.status_code == 200:
             data["categories"] = response.json()
@@ -86,18 +98,24 @@ def load_analytics_data(api_base_url: str, start_date: Optional[str] = None,
             params["start_date"] = start_date
         if end_date:
             params["end_date"] = end_date
+        if severity and severity != "All":
+            params["severity"] = severity.lower()
         response = requests.get(f"{api_base_url}/api/analytics/medications", params=params, timeout=10)
         if response.status_code == 200:
             data["medications"] = response.json()
         
-        # Audits
+        # Audits - apply all filters
         params = {"limit": 1000}
         if start_date:
             params["start_date"] = start_date
         if end_date:
             params["end_date"] = end_date
-        if severity:
-            params["severity"] = severity
+        if severity and severity != "All":
+            params["severity"] = severity.lower()
+        if categories:
+            params["categories"] = ",".join(categories)
+        if symptoms:
+            params["symptoms"] = ",".join(symptoms)
         response = requests.get(f"{api_base_url}/api/analytics/audits", params=params, timeout=10)
         if response.status_code == 200:
             data["audits"] = response.json()
@@ -114,23 +132,46 @@ def load_analytics_data(api_base_url: str, start_date: Optional[str] = None,
 
 def render_kpi_card(title: str, value: Any, icon: str = "📊", 
                    delta: Optional[str] = None, color: str = "blue"):
-    """Render a Power BI-style KPI card."""
+    """Render a Power BI-style KPI card with professional styling."""
+    # Color gradients for different KPIs
+    gradients = {
+        "blue": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "red": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "orange": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+        "purple": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+        "green": "linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)"
+    }
+    gradient = gradients.get(color, gradients["blue"])
+    
+    # Format value for display - ensure it's a string and handle truncation
+    if isinstance(value, str):
+        # Clean up the value - remove any HTML artifacts
+        value = value.replace("</div>", "").strip()
+        # Truncate long values but keep them readable
+        if len(value) > 15:
+            value = value[:15] + "..."
+    value_str = str(value)
+    
+    delta_html = f'<div style="font-size: 0.75rem; opacity: 0.85; margin-top: 0.5rem; font-weight: 500;">{delta}</div>' if delta else ''
+    
+    # Use Streamlit columns and metrics for cleaner rendering
     st.markdown(f"""
     <div style="
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: {gradient};
         padding: 1.5rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        color: #1a1a1a;
         margin-bottom: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     ">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div>
-                <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">{title}</div>
-                <div style="font-size: 2rem; font-weight: bold;">{icon} {value}</div>
-                {f'<div style="font-size: 0.8rem; margin-top: 0.5rem;">{delta}</div>' if delta else ''}
-            </div>
-        </div>
+        <div style="font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">{title}</div>
+        <div style="font-size: 2.25rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.25rem; word-wrap: break-word; overflow-wrap: break-word;">{icon} {value_str}</div>
+        {delta_html}
     </div>
     """, unsafe_allow_html=True)
 
@@ -173,18 +214,32 @@ def render_kpi_cards(kpis: Dict[str, Any]):
     with col4:
         top_symptoms = kpis.get("top_symptoms", [])
         top_symptom = top_symptoms[0]["symptom"] if top_symptoms else "None"
+        # Clean and format symptom name - capitalize properly
+        if top_symptom and top_symptom != "None":
+            top_symptom = top_symptom.strip().title()  # Title case for readability
+            if len(top_symptom) > 18:
+                top_symptom = top_symptom[:18] + "..."
         render_kpi_card(
             "Top Symptom",
-            top_symptom[:20] + "..." if len(top_symptom) > 20 else top_symptom,
+            top_symptom if top_symptom else "None",
             icon="🤒",
             color="purple"
         )
     
     with col5:
         top_agent = kpis.get("most_triggered_agent", "None")
+        # Clean and format agent name - make it readable
+        if top_agent and top_agent != "None":
+            # Remove "Agent" suffix and format nicely
+            top_agent = top_agent.replace("Agent", "").replace("Checker", "").strip()
+            # Add spaces before capital letters for readability
+            top_agent = re.sub(r'(?<!^)(?=[A-Z])', ' ', top_agent)
+            top_agent = top_agent.title()
+            if len(top_agent) > 18:
+                top_agent = top_agent[:18] + "..."
         render_kpi_card(
             "Top Agent",
-            top_agent,
+            top_agent if top_agent else "None",
             icon="🤖",
             color="green"
         )

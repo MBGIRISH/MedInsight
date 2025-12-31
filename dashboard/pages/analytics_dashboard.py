@@ -3,6 +3,7 @@ Power BI-style Analytics Dashboard for MedInsight.
 """
 import streamlit as st
 import pandas as pd
+import requests
 from datetime import datetime, timedelta
 from components.analytics import (
     load_analytics_data,
@@ -61,51 +62,111 @@ severity_filter = st.sidebar.selectbox(
     index=0
 )
 
-# Symptom filter (will be populated after data load)
-symptom_filter = st.sidebar.multiselect(
-    "Symptom Filter",
-    options=[],
-    default=[]
-)
-
 # Category filter
 category_filter = st.sidebar.multiselect(
     "Category Filter",
     options=["Respiratory", "Cardiac", "Infection", "Neurological", "Gastrointestinal", "Metabolic"],
-    default=[]
+    default=[],
+    help="Filter by clinical category"
+)
+
+# Symptom filter (will be populated after initial data load)
+# First, get available symptoms
+try:
+    symptom_params = {}
+    if start_date:
+        symptom_params["start_date"] = start_date.strftime("%Y-%m-%d")
+    if end_date:
+        symptom_params["end_date"] = end_date.strftime("%Y-%m-%d")
+    symptom_response = requests.get(f"{API_BASE_URL}/api/analytics/symptoms", params=symptom_params, timeout=5)
+    if symptom_response.status_code == 200:
+        symptom_data = symptom_response.json()
+        available_symptoms = [s.get("symptom", "") for s in symptom_data.get("symptom_frequency", []) if s.get("symptom")]
+    else:
+        available_symptoms = []
+except:
+    available_symptoms = []
+
+symptom_filter = st.sidebar.multiselect(
+    "Symptom Filter",
+    options=available_symptoms[:50] if available_symptoms else [],  # Limit to top 50
+    default=[],
+    help="Filter by specific symptoms"
 )
 
 # ============================================
 # MAIN DASHBOARD
 # ============================================
-st.title("📊 MedInsight Analytics Dashboard")
-st.markdown("---")
+# Professional header with styling
+st.markdown("""
+<style>
+    .main-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+        border-radius: 12px;
+        color: white;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .main-header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+    .main-header p {
+        margin: 0.5rem 0 0 0;
+        opacity: 0.9;
+        font-size: 1.1rem;
+    }
+</style>
+""", unsafe_allow_html=True)
 
-# Load data
+st.markdown("""
+<div class="main-header">
+    <h1>📊 MedInsight Analytics Dashboard</h1>
+    <p>AI-Powered Clinical Notes Analysis & Risk Assessment</p>
+</div>
+""", unsafe_allow_html=True)
+
+# Load data with all filters
 with st.spinner("Loading analytics data..."):
     start_date_str = start_date.strftime("%Y-%m-%d") if start_date else None
     end_date_str = end_date.strftime("%Y-%m-%d") if end_date else None
-    severity_str = severity_filter.lower() if severity_filter != "All" else None
+    severity_str = severity_filter if severity_filter != "All" else None
     
     analytics_data = load_analytics_data(
         API_BASE_URL,
         start_date=start_date_str,
         end_date=end_date_str,
-        severity=severity_str
+        severity=severity_str,
+        categories=category_filter if category_filter else None,
+        symptoms=symptom_filter if symptom_filter else None
     )
 
-# Export buttons
-col1, col2 = st.columns([1, 10])
+# Export buttons - Professional styling
+col1, col2, col3 = st.columns([2, 2, 8])
 with col1:
-    if st.button("📥 Export CSV"):
-        if analytics_data.get("audits"):
-            csv_data = export_audits_csv(analytics_data["audits"])
-            st.download_button(
-                label="Download CSV",
-                data=csv_data,
-                file_name=f"medinsight_analytics_{datetime.now().strftime('%Y%m%d')}.csv",
-                mime="text/csv"
-            )
+    if analytics_data.get("audits") and analytics_data["audits"].get("audits"):
+        csv_data = export_audits_csv(analytics_data["audits"])
+        st.download_button(
+            label="📥 Export CSV",
+            data=csv_data,
+            file_name=f"medinsight_analytics_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+            mime="text/csv",
+            use_container_width=True
+        )
+with col2:
+    # Filter summary
+    active_filters = []
+    if severity_filter != "All":
+        active_filters.append(f"Severity: {severity_filter}")
+    if category_filter:
+        active_filters.append(f"Categories: {len(category_filter)}")
+    if symptom_filter:
+        active_filters.append(f"Symptoms: {len(symptom_filter)}")
+    
+    if active_filters:
+        st.caption(f"Active Filters: {', '.join(active_filters)}")
 
 # ============================================
 # KPI CARDS
