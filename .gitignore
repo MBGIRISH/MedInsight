@@ -51,8 +51,10 @@ htmlcov/
 # Streamlit
 .streamlit/
 
-# AI/IDE specific
+# AI/IDE specific - Hidden from repository
 .bolt/
 .cursor/
+.bolt
 *.bolt
 .cursorrules
+.cursor/
