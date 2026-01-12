@@ -275,15 +275,15 @@ Screenshots and visualizations demonstrating system functionality:
 
 ### Dashboard Overview
 ![Dashboard Overview](images/output/dashboard_overview.png)
-*Main dashboard interface showing system overview and navigation options*
+*Main application interface showing the Upload & Audit page with document upload functionality and navigation options*
 
 ### Analytics Dashboard
 ![Analytics Dashboard](images/output/analytics_dashboard.png)
-*Analytics dashboard showing KPIs, trends, and clinical category analysis with interactive filters*
+*Analytics dashboard showing KPIs, trends, and clinical category analysis with interactive filters for severity, category, and symptoms*
 
 ### Audit Results
 ![Audit Results](images/output/audit_results.png)
-*Detailed audit report with risk scoring, severity classification, and actionable recommendations*
+*Detailed audit report with risk scoring, severity classification, and actionable recommendations for clinical decision support*
 
 ## Future Improvements
 
