@@ -363,7 +363,7 @@ def display_final_report(audit_report: Dict[str, Any]):
                     st.markdown(f"**Rationale:** {rationale}")
                     
                     # Ordered items
-                    ordered_items = action.get('ordered_items', [])
+                    ordered_items = action.get('ordered_items') or []
                     if ordered_items:
                         st.markdown("**Ordered Tests/Procedures:**")
                         for item in ordered_items:
@@ -796,12 +796,13 @@ def _display_clinician_summary(audit_report: Dict[str, Any]):
         items = next_steps.get('items', [])
         suggested_tests = []
         for item in items:
-            ordered_items = item.get('ordered_items', [])
-            for ordered in ordered_items:
-                test_name = ordered.get('name', '')
-                test_type = ordered.get('type', '')
-                if test_name and test_name not in suggested_tests:
-                    suggested_tests.append(f"{test_name} ({test_type})")
+            ordered_items = item.get('ordered_items') or []
+            if ordered_items:
+                for ordered in ordered_items:
+                    test_name = ordered.get('name', '')
+                    test_type = ordered.get('type', '')
+                    if test_name and test_name not in suggested_tests:
+                        suggested_tests.append(f"{test_name} ({test_type})")
         
         if suggested_tests:
             st.markdown("#### Suggested Labs/Imaging")
@@ -1148,9 +1149,10 @@ def generate_pdf_report(audit_report: Dict[str, Any]) -> bytes:
             story.append(Paragraph(f"<b>Rationale:</b> {item.get('rationale', '')}", styles['Normal']))
             
             # Ordered items
-            if item.get('ordered_items'):
+            ordered_items = item.get('ordered_items') or []
+            if ordered_items:
                 story.append(Paragraph("<b>Ordered Items:</b>", styles['Normal']))
-                for ordered in item.get('ordered_items', []):
+                for ordered in ordered_items:
                     story.append(Paragraph(f"  • {ordered.get('name', '')} ({ordered.get('type', '')}) - {ordered.get('urgency', '')}", styles['Normal']))
             
             # Treatment recommendations

@@ -18,9 +18,14 @@ build/
 *.swo
 *~
 
-# Logs
+# Logs and process files
 *.log
 *.pid
+backend.log
+dashboard.log
+startup.log
+backend/*.log
+backend/*.pid
 
 # Environment
 .env
